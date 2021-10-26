@@ -15,8 +15,5 @@ data class Writer @JvmOverloads constructor(
 
         @OneToMany(mappedBy = "writer", fetch = FetchType.LAZY)
         val blogs: Set<Blog>? = HashSet()
-
-
 ){
-
 }
