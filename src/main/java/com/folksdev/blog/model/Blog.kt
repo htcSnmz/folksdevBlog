@@ -14,7 +14,7 @@ data class Blog @JvmOverloads constructor(
         val contents: String,
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "writer_id")
-        val writer: Writer,
+        @JoinColumn(name = "writer_id", referencedColumnName = "writer_id")
+        val writer: Writer
 ) {
 }
