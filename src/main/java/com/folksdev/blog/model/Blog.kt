@@ -17,4 +17,25 @@ data class Blog @JvmOverloads constructor(
         @JoinColumn(name = "writer_id", referencedColumnName = "writer_id")
         val writer: Writer
 ) {
+        override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (javaClass != other?.javaClass) return false
+
+                other as Blog
+
+                if (id != null && id != other.id) return false
+                if (title != other.title) return false
+                if (contents != other.contents) return false
+                if (writer != other.writer) return false
+
+                return true
+        }
+
+        override fun hashCode(): Int {
+                var result = id?.hashCode() ?: 0
+                result = 31 * result + title.hashCode()
+                result = 31 * result + contents.hashCode()
+                result = 31 * result + writer.id.hashCode()
+                return result
+        }
 }
